@@ -23,6 +23,6 @@ RUN pip install --no-cache /app/wheels/*
 RUN mkdir /app/staticfiles
 COPY entrypoint.sh .
 COPY . .
-EXPOSE 8080
+EXPOSE 3001
 RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT [ "/app/entrypoint.sh" ]
