@@ -23,5 +23,5 @@ RUN pip install --no-cache /app/wheels/*
 RUN mkdir /app/staticfiles
 COPY entrypoint.sh .
 COPY . .
-
+EXPOSE 8080
 ENTRYPOINT [ "/app/entrypoint.sh" ]
