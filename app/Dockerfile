@@ -24,4 +24,5 @@ RUN mkdir /app/staticfiles
 COPY entrypoint.sh .
 COPY . .
 EXPOSE 8080
+RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT [ "/app/entrypoint.sh" ]
