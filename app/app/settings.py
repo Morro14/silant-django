@@ -35,7 +35,8 @@ ALLOWED_HOSTS = (
     else []
 )
 CORS_ALLOW_ALL_ORIGINS = True
-CSRF_TRUSTED_ORIGINS = ["django-954654026758.me-west1.run.app"]
+CSRF_TRUSTED_ORIGINS = ["https://silant-django-954654026758.me-west1.run.app"]
+
 AUTH_USER_MODEL = "main.MyUser"
 USE_X_FORWARDED_HOST = True
 USE_X_FORWARDED_PORT = True
@@ -213,7 +214,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
-# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "static/media/")
 # STATICFILES = ""
