@@ -1,0 +1,369 @@
+openapi: 3.0.3
+info:
+  title: Silant API
+  version: 1.0.0
+  description: description
+paths:
+  /api/auth:
+    post:
+      operationId: api_auth_create
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/create/{category}:
+    post:
+      operationId: api_create_create
+      parameters:
+      - in: path
+        name: category
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/dashboard/:
+    get:
+      operationId: api_dashboard_retrieve
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/dashboard/tab={category}&sorting={sorting}:
+    get:
+      operationId: api_dashboard_tab=&sorting=_retrieve
+      parameters:
+      - in: path
+        name: category
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: sorting
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/details:
+    get:
+      operationId: api_details_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/details/{name}:
+    get:
+      operationId: api_details_retrieve_2
+      parameters:
+      - in: path
+        name: name
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/machines/{id_num}:
+    get:
+      operationId: api_machines_retrieve
+      parameters:
+      - in: path
+        name: id_num
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Machine'
+          description: ''
+  /api/machines/restricted/{id_num}:
+    get:
+      operationId: api_machines_restricted_retrieve
+      parameters:
+      - in: path
+        name: id_num
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MachineRestricted'
+          description: ''
+  /api/reclamation/{id_}:
+    get:
+      operationId: api_reclamation_retrieve
+      parameters:
+      - in: path
+        name: id_
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/reclamations:
+    get:
+      operationId: api_reclamations_retrieve
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/test/:
+    get:
+      operationId: api_test_list
+      tags:
+      - api
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reference'
+          description: ''
+components:
+  schemas:
+    Machine:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        id_num:
+          type: string
+          maxLength: 30
+        model:
+          type: string
+        engine_model:
+          type: string
+        engine_id:
+          type: string
+          maxLength: 30
+        transmission_model:
+          type: string
+        transmission_id:
+          type: string
+          maxLength: 30
+        main_bridge_model:
+          type: string
+        main_bridge_id:
+          type: string
+          maxLength: 30
+        steerable_bridge_model:
+          type: string
+        steerable_bridge_id:
+          type: string
+          maxLength: 30
+        supply_contract_num_date:
+          type: string
+          maxLength: 120
+        shipment_date:
+          type: string
+          format: date
+        cargo_receiver:
+          type: string
+          maxLength: 120
+        supply_address:
+          type: string
+          maxLength: 220
+        equipment_add:
+          type: string
+          maxLength: 220
+        client:
+          type: string
+        service_company:
+          type: string
+        sorting_fields:
+          type: string
+          readOnly: true
+      required:
+      - cargo_receiver
+      - client
+      - engine_id
+      - engine_model
+      - equipment_add
+      - id
+      - id_num
+      - main_bridge_id
+      - main_bridge_model
+      - model
+      - service_company
+      - shipment_date
+      - sorting_fields
+      - steerable_bridge_id
+      - steerable_bridge_model
+      - supply_address
+      - supply_contract_num_date
+      - transmission_id
+      - transmission_model
+    MachineRestricted:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        id_num:
+          type: string
+          maxLength: 30
+        model:
+          type: string
+        engine_model:
+          type: string
+        engine_id:
+          type: string
+          maxLength: 30
+        transmission_model:
+          type: string
+        transmission_id:
+          type: string
+          maxLength: 30
+        main_bridge_model:
+          type: string
+        main_bridge_id:
+          type: string
+          maxLength: 30
+        steerable_bridge_model:
+          type: string
+        steerable_bridge_id:
+          type: string
+          maxLength: 30
+        sorting_fields:
+          type: string
+          readOnly: true
+      required:
+      - engine_id
+      - engine_model
+      - id
+      - id_num
+      - main_bridge_id
+      - main_bridge_model
+      - model
+      - sorting_fields
+      - steerable_bridge_id
+      - steerable_bridge_model
+      - transmission_id
+      - transmission_model
+    RefTypeEnum:
+      enum:
+      - service
+      - client
+      - machine_model
+      - engine_model
+      - transmission_model
+      - steerable_bridge_model
+      - main_bridge_model
+      - not_specified
+      - failure_node
+      - recovery_method
+      - maintenance_type
+      type: string
+      description: |-
+        * `service` - Service company
+        * `client` - Client
+        * `machine_model` -  Machine model
+        * `engine_model` - Engine model
+        * `transmission_model` - Transmission model
+        * `steerable_bridge_model` - Steerable bridge model
+        * `main_bridge_model` - Main bridge model
+        * `not_specified` - not specified
+        * `failure_node` - Failure node
+        * `recovery_method` - Recovery method
+        * `maintenance_type` - Maintenance type
+    Reference:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 120
+        ref_type:
+          allOf:
+          - $ref: '#/components/schemas/RefTypeEnum'
+          title: Reference type
+        description:
+          type: string
+          maxLength: 360
+      required:
+      - description
+      - id
+      - name
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
