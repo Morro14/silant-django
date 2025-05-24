@@ -34,7 +34,8 @@ ALLOWED_HOSTS = (
     if os.environ.get("DJANGO_ALLOWED_HOSTS")
     else []
 )
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = ["https://client-954654026758.me-west1.run.app"]
 CSRF_TRUSTED_ORIGINS = ["https://nginx-954654026758.me-west1.run.app"]
 
 AUTH_USER_MODEL = "main.MyUser"
